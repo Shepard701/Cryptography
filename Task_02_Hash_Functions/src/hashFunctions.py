@@ -4,7 +4,6 @@ import random
 import string
 import timeit
 import plotly.express as pl
-# import pandas as pd
 
 
 class HashFunctions:
@@ -17,6 +16,12 @@ class HashFunctions:
 
     @staticmethod
     def hash_all(cleartext: str) -> None:
+        """
+        Prints all possible hashes from hashlib to a given text
+
+        :param cleartext: text
+        :return: None
+        """
         encoded_text = cleartext.encode()
 
         for alg in hl.algorithms_available:
@@ -30,6 +35,13 @@ class HashFunctions:
 
     @staticmethod
     def hash_file(path: str, alg: str) -> str:
+        """
+        Returns hash as a string to a given file
+
+        :param path: path to file
+        :param alg: hashing algorithm name from hashlib
+        :return: hash returned as a string
+        """
         out = hl.new(alg)
         with open(path, 'rb') as file:
             file_block = file.read(out.block_size)
@@ -40,6 +52,13 @@ class HashFunctions:
 
     @staticmethod
     def hash_time_plot(amount: int, alg: str) -> None:
+        """
+        Displays plot with string length and time taken to hash it
+
+        :param amount: amount of strings
+        :param alg: hashing algorithm name from hashlib
+        :return: None
+        """
         result = {'length': [], 'speed': []}
         text = ""
 
@@ -52,8 +71,3 @@ class HashFunctions:
 
         plot = pl.line(result, x='length', y='speed')
         plot.show()
-
-
-# HashFunctions.hash_all('Text to hash.')
-# print(HashFunctions.hash_file("./ubuntu-20.10-desktop-amd64.iso", "sha256"))
-# HashFunctions.hash_time_plot(8, 'md5')
