@@ -118,3 +118,4 @@ dmypy.json
 .idea/inspectionProfiles/profiles_settings.xml
 .idea/Cryptography.iml
 Task_02_Hash_Functions/test/ubuntu-20.10-desktop-amd64.iso
+.idea/workspace.xml

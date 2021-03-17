@@ -4,6 +4,7 @@ import random
 import string
 import timeit
 import plotly.express as pl
+# import pandas as pd
 
 
 class HashFunctions:
@@ -54,6 +55,6 @@ class HashFunctions:
         plot.show()
 
 
-# HashFunctions.hash_all('Text to hash.')
+HashFunctions.hash_all('Text to hash.')
 # print(HashFunctions.hash_file("./ubuntu-20.10-desktop-amd64.iso"))
 # HashFunctions.hash_time_plot(8, 'md5')
