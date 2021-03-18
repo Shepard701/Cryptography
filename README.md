@@ -13,3 +13,5 @@ pip install -r requirements.txt
 IDE: [PyCharm](https://www.jetbrains.com/pycharm)
 
 Tests: [unittest](https://docs.python.org/3/library/unittest.html)
+### Inspiration:
+Tasks' README.md design forked from [MatSaf123](https://github.com/MatSaf123/cryptography-classes) - love you bro <3
