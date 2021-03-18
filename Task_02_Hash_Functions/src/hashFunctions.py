@@ -66,7 +66,7 @@ class HashFunctions:
             # Loop to make string longer
             for j in range(200):
                 text += random.choice(string.ascii_lowercase)
-            result['length'].append(i*200)
+            result['length'].append(i * 200)
             result['speed'].append(timeit.timeit(lambda: hl.new(alg, text.encode())))
 
         plot = pl.line(result, x='length', y='speed')
