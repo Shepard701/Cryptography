@@ -28,7 +28,4 @@ class PasswordHandler:
         :return: True if succeed and false if doesn't
         """
         hashed_password = hashlib.pbkdf2_hmac("sha256", password.encode("utf-8"), salt, 100000)
-        if hashed_password.hex() == correct_password:
-            return True
-        else:
-            return False
+        return hashed_password.hex() == correct_password
