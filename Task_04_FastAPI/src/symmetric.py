@@ -7,11 +7,11 @@ class Symmetric:
         self._key = None
 
     @staticmethod
-    def generate_random_key() -> bytes:
-        return Fernet.generate_key()
+    def generate_random_key() -> str:
+        return Fernet.generate_key().hex()
 
-    def set_key(self, key: bytes) -> None:
-        self._key = Fernet(key)
+    def set_key(self, key: str) -> None:
+        self._key = Fernet(bytearray.fromhex(key))
 
     def encode_message(self, msg: str) -> bytes:
         return self._key.encrypt(bytes(msg, "utf-8"))
