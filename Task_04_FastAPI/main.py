@@ -115,7 +115,8 @@ def post_asymmetric_sing_message(msg: SignedMessage):
     :return: Boolean value depending of correct verification
     """
     verification = asymmetric.verify_message(msg.text, msg.signature)
-    return {"Sign verification": verification}
+    output = "Your message was verified successfully" if verification else "Given signature doesn't match given message"
+    return {"Sign verification": output}
 
 
 @app.post("/asymmetric/encode")
