@@ -64,3 +64,15 @@ def post_asymmetric_sing_message(msg: Message):
 def post_asymmetric_sing_message(msg: SignedMessage):
     verification = asymmetric.verify_message(msg.text, msg.signature)
     return {"Sign verification": verification}
+
+
+@app.post("/asymmetric/encode")
+def post_asymmetric_encode_message(msg: Message):
+    encoded_message = asymmetric.encode_message(msg.text)
+    return {"Encoded message": encoded_message}
+
+
+@app.post("/asymmetric/decode")
+def post_asymmetric_decode_message(msg: Message):
+    decoded_message = asymmetric.decode_message(msg.text)
+    return {"Decoded message": decoded_message}

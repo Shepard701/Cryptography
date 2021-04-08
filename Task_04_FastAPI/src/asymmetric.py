@@ -1,10 +1,9 @@
-import hashlib
 import base64
 
 from cryptography.exceptions import InvalidSignature
 from cryptography.hazmat.primitives import hashes, serialization
 from cryptography.hazmat.primitives.asymmetric import (
-    padding, rsa, utils
+    padding, rsa
 )
 
 
@@ -13,9 +12,6 @@ class Asymmetric:
     def __init__(self):
         self._privateKey = None
         self._publicKey = None
-
-    def get_keys(self) -> list:
-        return [self._privateKey, self._publicKey]
 
     def get_keys_hex(self) -> list:
         private_pem = self._privateKey.private_bytes(
@@ -81,3 +77,25 @@ class Asymmetric:
             return True
         except InvalidSignature:
             return False
+
+    def encode_message(self, msg: str) -> bytes:
+        return base64.b64encode(self._publicKey.encrypt(
+                bytes(msg, "utf-8"),
+                padding.OAEP(
+                    mgf=padding.MGF1(algorithm=hashes.SHA256()),
+                    algorithm=hashes.SHA256(),
+                    label=None
+                )
+            )
+        )
+
+    def decode_message(self, msg: str) -> str:
+        decoded_msg = base64.b64decode(msg)
+        return self._privateKey.decrypt(
+            decoded_msg,
+            padding.OAEP(
+                mgf=padding.MGF1(algorithm=hashes.SHA256()),
+                algorithm=hashes.SHA256(),
+                label=None
+            )
+        )
