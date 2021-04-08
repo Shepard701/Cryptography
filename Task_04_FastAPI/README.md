@@ -1,12 +1,12 @@
 # FastAPI
 1. Zapoznaj się z biblioteką Cryptography powtarzając przykłady z wykładu (szyfrowanie symetryczne, generowanie klucza publicznego i prywatnego, serializacja kluczy, itp.)
 2. Stwórz prosty serwis z API za pomocą https://fastapi.tiangolo.com/ z endpointami:
-####a) Symmetric:
+#### a) Symmetric:
 * GET symetric/key -> zwraca losowo wygenerowany klucz symetryczny w postaci HEXów (może być JSON)
 * POST symetric/key -> ustawia na serwerze klucz symetryczny podany w postaci HEX w request
 * POST symetric/encode -> wysyłamy wiadomość, w wyniku dostajemy ją zaszyfrowaną
 * POST symetric/decode -> wysyłamy wiadomość, w wyniku dostajemy ją odszyfrowaną
-####b) Asymmetric:
+#### b) Asymmetric:
 * GET asymetric/key -> zwraca nowy klucz publiczny i prywatny w postaci HEX (w JSON jako dict) i ustawia go na serwerze
 * GET asymetric/key/ssh -> zwraca klucz publiczny i prywatny w postaci HEX zapisany w formacie OpenSSH
 * POST asymetric/key -> ustawia na serwerze klucz publiczny i prywatny w postaci HEX (w JSON jako dict)
