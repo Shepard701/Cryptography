@@ -119,3 +119,5 @@ dmypy.json
 .idea/Cryptography.iml
 Task_02_Hash_Functions/test/ubuntu-20.10-desktop-amd64.iso
 .idea/workspace.xml
+Task_05_Cryptanalysis_V1/src/encrypted_text.txt
+Task_05_Cryptanalysis_V1/src/sample_text.txt
