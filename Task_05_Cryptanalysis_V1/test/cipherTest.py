@@ -6,8 +6,8 @@ from Task_05_Cryptanalysis_V1.src.cipher import Cipher
 class HashFunctionsTest(unittest.TestCase):
 
     def test_init(self):
-        Ci = Cipher()
-        self.assertIsInstance(Ci, Cipher)
+        ci = Cipher()
+        self.assertIsInstance(ci, Cipher)
 
     def test_encrypt(self):
         encrypted_text = Cipher.encrypt('./sample_text.txt', 4)

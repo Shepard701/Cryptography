@@ -9,6 +9,13 @@ class Decrypt:
 
     @staticmethod
     def decrypt_text(path: str, key: int) -> str:
+        """
+        Decrypts text in a given txt file
+
+        :param path: path to a txt file
+        :param key: integer number the cipher will use in decrypting
+        :return: decrypted text returned as string
+        """
         sub = []
         decrypted_text = ""
         result = ""
@@ -18,12 +25,12 @@ class Decrypt:
         file.close()
 
         for i in range(len(text)):
-            if i < 4:
+            if i < key:
                 decrypted_text += chr((ord(text[i]) - Decrypt.LOWER_A_ASCII_CODE - key + Decrypt.ALPHABET_SIZE)
                                       % Decrypt.ALPHABET_SIZE + Decrypt.LOWER_A_ASCII_CODE)
                 sub.append(ord(text[i]) - Decrypt.LOWER_A_ASCII_CODE)
             else:
-                decrypted_text += chr((ord(text[i]) - Decrypt.LOWER_A_ASCII_CODE - sub[(i + 1) % 4])
+                decrypted_text += chr((ord(text[i]) - Decrypt.LOWER_A_ASCII_CODE - sub[(i + 1) % key])
                                       % Decrypt.ALPHABET_SIZE + Decrypt.LOWER_A_ASCII_CODE)
         decrypted_text = [decrypted_text[i:i + key] for i in range(0, len(decrypted_text), key)]
         for i in range(int(len(decrypted_text) / 2)):
@@ -36,6 +43,7 @@ class Decrypt:
 
 
 if __name__ == '__main__':
-    path = "sample_encrypted_text.txt"
-    decrypted_text = Decrypt.decrypt_text(path, 4)
-    print(decrypted_text)
+    """
+        Decrypt.decrypt_text(path, 4) - Use to decrypt text in a txt file
+    """
+#    print(Decrypt.decrypt_text("path.txt", 4))

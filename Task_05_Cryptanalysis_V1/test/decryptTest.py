@@ -6,8 +6,8 @@ from Task_05_Cryptanalysis_V1.src.decrypt import Decrypt
 class HashFunctionsTest(unittest.TestCase):
 
     def test_init(self):
-        De = Decrypt()
-        self.assertIsInstance(De, Decrypt)
+        de = Decrypt()
+        self.assertIsInstance(de, Decrypt)
 
     def test_encrypt(self):
         encrypted_text = Decrypt.decrypt_text('./sample_encrypted_text.txt', 4)
