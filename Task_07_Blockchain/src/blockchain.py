@@ -2,8 +2,10 @@ import hashlib
 import json
 from time import time
 
+# -------------------------------------------------------------------------------------------------------------
+# Class forked from the blockchain tutorial (https://github.com/mchrupcala/blockchain-walkthrough) and modified
+# -------------------------------------------------------------------------------------------------------------
 
-# Class forked from the blockchain tutorial (https://github.com/mchrupcala/blockchain-walkthrough)
 
 class Blockchain(object):
 
@@ -12,10 +14,14 @@ class Blockchain(object):
         self.pending_transactions = []
         self.new_block(previous_hash="One to rule them all", proof=1)
 
-    # Create a new block listing key/value pairs of block information in a JSON object. Reset the list of pending
-    # transactions & append the newest block to the chain.
-
     def new_block(self, proof, previous_hash=None):
+        """
+        Create new block
+
+        :param proof: integer number
+        :param previous_hash: hash from previous block
+        :return: new block
+        """
         block = {
             'index': len(self.chain) + 1,
             'timestamp': time(),
@@ -28,27 +34,40 @@ class Blockchain(object):
 
         return block
 
-    # Search the blockchain for the most recent block.
-
     @property
     def last_block(self):
+        """
+        Getter for last block
+
+        :return: Last block
+        """
         return self.chain[-1]
 
-    # Add a transaction with relevant info to the 'blockpool' - list of pending tx's.
+    def new_transaction(self, sender, recipient, topic, message):
+        """
+        Creates new transaction
 
-    def new_transaction(self, sender, recipient, amount):
+        :param sender: Name of sender
+        :param recipient: Name of receiver
+        :param topic: Topic of the message
+        :param message: Message
+        :return: None
+        """
         transaction = {
             'sender': sender,
             'recipient': recipient,
-            'amount': amount
+            'topic': topic,
+            'message': message,
         }
         self.pending_transactions.append(transaction)
-        return self.last_block['index'] + 1
-
-    # Receive one block. Turn it into a string, turn that into Unicode (for hashing). Hash with SHA256 encryption,
-    # then translate the Unicode into a hexidecimal string.
 
     def hash(self, block):
+        """
+        Hashes block
+
+        :param block: Block
+        :return: Hashed block
+        """
         string_object = json.dumps(block, sort_keys=True)
         block_string = string_object.encode()
 
@@ -57,8 +76,31 @@ class Blockchain(object):
 
         return hex_hash
 
-    # Definitions added outside of the tutorial
-    # Receive quantity of blocks
+    # -------------------------------------
+    # Methods added outside of the tutorial
+    # -------------------------------------
 
     def chain_quantity(self):
+        """
+        Getter for chain quantity
+
+        :return: Chain Quantity
+        """
         return len(self.chain)
+
+    def block_display(self, index):
+        """
+        Getter for specific block
+
+        :param index: index of block
+        :return: Block
+        """
+        return self.chain[index]
+
+    def current_transactions(self):
+        """
+        Getter for pending transactions
+
+        :return: Pending transactions
+        """
+        return self.pending_transactions
