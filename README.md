@@ -6,6 +6,8 @@ Tasks to do for cryptography classes.
 - [x] [Task 03](https://github.com/Shepard701/Cryptography/tree/main/Task_03_Saving_Passwords) - Zapisywanie haseł, funkcje skrótu ciąg dalszy
 - [x] [Task 04](https://github.com/Shepard701/Cryptography/tree/main/Task_04_FastAPI) - FastAPI, szyfrowanie, klucze
 - [x] [Task 05](https://github.com/Shepard701/Cryptography/tree/main/Task_05_Cryptanalysis_V1) - Cryptanalysis V1
+- [x] Task 06 - Cryptanalysis V2 (Task wasn't about writing code)
+- [x] [Task 07](https://github.com/Shepard701/Cryptography/tree/main/Task_07_Blockchain) - Blockchain
 ## Installation:
 ```bash
 pip install -r requirements.txt
