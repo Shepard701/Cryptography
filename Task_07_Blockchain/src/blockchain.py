@@ -48,7 +48,7 @@ class Blockchain(object):
         Creates new transaction
 
         :param sender: Name of sender
-        :param recipient: Name of receiver
+        :param recipient: Name of recipient
         :param topic: Topic of the message
         :param message: Message
         :return: None

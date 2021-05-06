@@ -28,17 +28,17 @@ class Menu:
         option = 'init'
         while option != '0':
             Menu.draw_menu()
-            option = input("Enter your option [0-4]: ")
+            option = input("Enter your option [0-6]: ")
             if option == '0':
                 logging.info("Closing the app . . .\n")
             elif option == '1':
                 print("Blockchain:\n", bc.chain)
             elif option == '2':
                 sender = input("Input your name: ")
-                receiver = input("Input name of the receiver: ")
+                recipient = input("Input name of the recipient: ")
                 topic = input("Input the topic of the message: ")
                 message = input("Input message: ")
-                bc.new_transaction(sender, receiver, topic, message)
+                bc.new_transaction(sender, recipient, topic, message)
             elif option == '3':
                 try:
                     proof = int(input("Input proof value: "))
